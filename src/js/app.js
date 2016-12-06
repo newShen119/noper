@@ -1,16 +1,14 @@
 angular.module("app", ["app.controller", "app.directive", "app.service", "ui.router"])
 .config(function($stateProvider, $urlRouterProvider){
 	$stateProvider
-	.state("index",{
-		url: "/index",
-		views: {
-			"index":{
-			 	template:"views/home.html"
-			},
-			"angular-bind": {
-				template:"views/angular-bind.html"
-			}
-		}
-	})
-	$urlRouterProvider.otherwise("index");
+		.state("home", {
+			url: "/home",
+			abstract: true,
+			templateUrl: "views/home.html"
+		})
+		.state("home.angular-bind", {
+			url: "/angular-bind",
+			templateUrl: "views/angular-bind.html"
+		})
+	$urlRouterProvider.otherwise("/home/angular-bind")	
 })
