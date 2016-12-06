@@ -2,6 +2,24 @@
 	/*width: */
 }
 
+.header {
+	height: 100px;
+}
+
 .content {
 	border: 1px #ddd solid;
+}
+
+
+.text-indent-2em {
+	text-indent: 2em;
+}
+
+code {
+	display: block;
+	padding: 10px;
+}
+
+p {
+	margin: 10px 0;
 }
