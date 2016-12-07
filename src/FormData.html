@@ -9,11 +9,82 @@
 <body>
 	<div class="header"></div>
 	<div class="container">
-		<p>用法1：创建一个空FormData对象</p>
+
+		<p>XMLHttpRequest Level 2 添加了一个新的接口FormData.利用FormData对象,我们可以通过JavaScript用一些键值对来模拟一系列表单控件,我们还可以使用XMLHttpRequest的send()方法来异步的提交这个"表单".比起普通的ajax,使用FormData的最大优点就是我们可以异步上传一个二进制文件.</p>
+		
+
+		<!-- 创建formData对象 -->
+		<h2>（一）创建formData对象</h2>
 		<code>var formData = new FormData();</code>
-		<p>用法2：基于一个 form dom 创建</p>
+		<p>创建一个空FormData对象</p>
 		<code>var formData = new FormData(form);</code>
+		<p>基于一个 form dom 创建FormData对象，该对象会携带form元素中的键值。</p>
+		
+		<!-- 添加字段 -->
+		<h2>（二）添加字段</h2>
+		<code>formData.append(key,value);</code>
+		<code>formData.append(key,value,filename);</code>
+		<div>
+			<p>当value为一个文件或二进制数据时（都属于流文件），filename表示流文件的文件名。</p>
+			<p>当value为file文件时，filename默认值为file.filename()</p>
+			<p>当value为Blob二进制数据时，filename默认值为"blob"</p>
+		</div>
+
+
+		<!-- 删除字段 -->
+		<h2>（三）删除字段</h2>
+		<p>用法：删除指定key对应的键值</p>
+		<code>formData.delete(key);</code>
+
+		
+		<!-- 遍历formData内的字段 -->
+		<h2>（四）遍历formData内的字段</h2>
+		<code>formData.entries();</code>
+		<p>The FormData.entries() 方法返回一个 iterator对象 ，此对象可以遍历访问FormData中的键值对。其中键值对的key是一个 USVString 对象；value是一个 USVString , 或者 Blob对象。</p>
+		<img src="img/formdata/04.png" alt="">
+
+
+		<!-- 获取key关联的第一个value值 -->
+		<h2>（五）获取key关联的第一个value值</h2>
+		<code>formData.get(key);</code>
+		<p class="note">FormData的get()方法用于返回FormData对象中和指定的键关联的第一个值，如果你想要返回和指定键关联的全部值，那么可以使用getAll()方法。</p>
+		
+
+		<!-- （六）获取key关联的所有value值 -->
+		<h2>（六）获取key关联的所有value值</h2>
+		<code>formData.getAll(key);</code>
+	
+		<h2>（七）是否含有key</h2>
+		<code>formData.has(key);</code>
+		<p>
+			<strong>return: boolean</strong>
+			<span>表示是否含有key</span>
+		</p>
+		<img src="img/formdata/07.png">
+		
+		<h2>（八）获取所有的key</h2>
+		<code>formData.keys();</code>
+		<img src="img/formdata/08.png">
+
+
 	</div>
+
+	<div id="footer"></div>
 </body>
 <script src="../node_modules/angular/angular.js"></script>
+<script type="text/javascript">
+
+	var formData = new FormData();
+	formData.append("name", "gaoxiong");
+	formData.append("age",50);
+
+	for( var key of formData.keys()) {
+		console.log(key);
+	};
+	//结果
+	name
+	age
+	
+
+</script>
 </html>
