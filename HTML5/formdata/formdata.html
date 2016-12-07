@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form name="form" action="">
+		<input type="text" name="username"/>
+		<input type="text" name="password"/>
+	</form>
+</body>
+<script type="text/javascript">
+	
+	//新建空formData
+	var formData = new FormData();
+
+	//基于 form 元素创建formData
+	var formData1 = new FormData(form);
+
+	//添加字段方法1
+	formData.append("name","gaoxiong");
+	formData.append("age",20);
+	formData.append("family","fengxujiao");
+	formData.append("family","baba");
+	formData.append("family","mama");
+
+	//添加字段方法1，当value为file时，filename默认值为file.filename，当value为blob对象时，filename为"blob"
+	formData.append(key,value,filename);
+
+
+	//遍历字段
+	for( var pair of formData.entries()){
+		console.log(pair[0]+","+pair[1]);
+	};
+
+	//删除字段
+	formData.delete("name");
+
+	//FormData的get()方法用于返回FormData对象中和指定的键关联的第一个值，如果你想要返回和指定键关联的全部值，那么可以使用getAll()方法。
+	formData.get("age");
+
+	//获取与key关联的所有value
+	formData.getAll("age");
+
+	//判断是否含有key
+	formData.has(name);
+
+	//遍历所有key
+	for (var key of formData.keys()) {
+   		console.log(key);
+	}
+
+	//重置字段，会将选定的字段先删除，在重新添加（注意与append的区别）
+	formData.set("family","gaoxiong");
+	for( var pair of formData.entries()){
+		console.log(pair[0]+","+pair[1]);
+	};
+
+	//获取所有values
+	for (var key of formData.values()) {
+   		console.log(key);
+	};
+
+</script>
+</html>
